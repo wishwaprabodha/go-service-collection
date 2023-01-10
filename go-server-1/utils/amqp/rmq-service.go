@@ -151,11 +151,6 @@ func Reconnect(conn *amqp.Connection) {
 			}
 
 			// Send a ping to the server
-			err := conn.
-			if err != nil {
-				log.Printf("Ping failed: %v", err)
-				conn.Close()
-			}
 
 			// Sleep for a while before checking again
 			time.Sleep(30 * time.Second)

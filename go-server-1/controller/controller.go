@@ -3,12 +3,12 @@ package controller
 import (
 	"encoding/json"
 	"fmt"
+	"github.com/wishwaprabodha/go-server/service"
 	"net/http"
 
 	"github.com/dolthub/vitess/go/vt/log"
 	"github.com/gorilla/mux"
 	"github.com/wishwaprabodha/go-server/model"
-	"github.com/wishwaprabodha/go-server/service/models"
 )
 
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -19,7 +19,7 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 func GetBooks(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var book models.Book
+	var book service.Book
 	books := book.GetBooks()
 	json.NewEncoder(w).Encode(books)
 }
@@ -27,14 +27,14 @@ func GetBooks(w http.ResponseWriter, r *http.Request) {
 func GetBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
-	var book models.Book
+	var book service.Book
 	searchBook := book.GetBook(params["id"])
 	json.NewEncoder(w).Encode(searchBook)
 }
 
 func AddBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var book models.Book
+	var book service.Book
 	error := json.NewDecoder(r.Body).Decode(&book)
 	if error != nil {
 		http.Error(w, "Decode Error", 400)
@@ -45,7 +45,7 @@ func AddBook(w http.ResponseWriter, r *http.Request) {
 
 func UpdateBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var book models.Book
+	var book service.Book
 	params := mux.Vars(r)
 	error := json.NewDecoder(r.Body).Decode(&book)
 	if error != nil {
@@ -57,7 +57,7 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
-	var book models.Book
+	var book service.Book
 	params := mux.Vars(r)
 	book.DeleteBook(params["id"])
 	json.NewEncoder(w).Encode(book)
@@ -70,12 +70,12 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		http.Error(w, "Decode Error", 400)
 	}
-	key, detaErr := models.CreateUserDeta(&user)
+	key, detaErr := service.CreateUserDeta(&user)
 	if detaErr != nil {
 		log.Fatal("Error: ", detaErr)
 	}
 	log.Info("key: ", key)
-	err, _ = models.CreateUser(&user)
+	err, _ = service.CreateUser(&user)
 	if err != nil {
 		return
 	}
@@ -88,7 +88,7 @@ func AddUser(w http.ResponseWriter, r *http.Request) {
 func GetUserByEmail(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	params := mux.Vars(r)
-	err, user := models.GetUserByEmail(params["email"])
+	err, user := service.GetUserByEmail(params["email"])
 	fmt.Println(user)
 	if err != nil {
 		return

@@ -20,7 +20,7 @@ func PingDB(db *sql.DB) {
 	ErrorCheck(err)
 }
 
-func DBConnection() (db *sql.DB) {
+func DbConnection() (db *sql.DB) {
 	db, err := sql.Open("mysql", "testdbwi:testdbwi@tcp(db4free.net:3306)/testdbwi")
 	ErrorCheck(err)
 	PingDB(db)

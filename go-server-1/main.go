@@ -2,10 +2,10 @@ package main
 
 import (
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/wishwaprabodha/go-server/router"
-	"github.com/wishwaprabodha/go-server/service/models"
-	"github.com/wishwaprabodha/go-server/utils/amqp"
-	"github.com/wishwaprabodha/go-server/utils/db"
+	"github.com/wishwaprabodha/go-service-collection/go-server-1/router"
+	"github.com/wishwaprabodha/go-service-collection/go-server-1/service"
+	"github.com/wishwaprabodha/go-service-collection/go-server-1/utils/amqp"
+	"github.com/wishwaprabodha/go-service-collection/go-server-1/utils/db"
 	"log"
 	"net/http"
 )
@@ -26,14 +26,14 @@ func main() {
 	if err != nil {
 		log.Panic("Mongo Connection Error: ", err)
 	}
-	_ = db.DBConnection()
+	_ = db.DbConnection()
 	log.Println("MySQL Connection Successful")
 	_, detaErr := db.DetaConnection()
 	if detaErr != nil {
 		log.Panic("Deta Connection Error: ", detaErr)
 	}
 	log.Println("Deta Connection Success")
-	models.InitBooks()
+	service.InitBooks()
 	rmqChannel, rmqChErr := amqp.CreateQueue(rmqConn)
 	if rmqChErr != nil {
 		log.Panic("RMQ Channel Creation Error: ", rmqChErr)
