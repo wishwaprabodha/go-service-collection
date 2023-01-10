@@ -27,7 +27,7 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password
     volumes:
-      - ./db-data/mongo/:/data/db
+      - ./temp/:/data/db
   rabbitmq:
     image: rabbitmq:3-management
     container_name: 'rabbitmq'
@@ -35,10 +35,4 @@ services:
       - "5672:5672"
       - "15672:15672"
     volumes:
-      - ./db-data/rabbitmq/:/var/lib/rabbitmq/
-    networks:
-      - rabbitmq_go_net
-
-networks:
-  rabbitmq_go_net:
-    driver: bridge
+      - ./temp/:/var/lib/rabbitmq/
