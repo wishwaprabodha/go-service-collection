@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  go-server:
+    #docker file path
+    build:
+      context: .
+      dockerfile: ./api-server.dockerfile
+    ports:
+      - "8001:8001"
+    deploy:
+      mode: replicated
+      replicas: 1
