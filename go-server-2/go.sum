@@ -1,0 +1,8 @@
+github.com/deta/deta-go v1.0.0 h1:vg94dg2t7ChYhs8DEn4oXLzLAGGafgCSClHfMYrVFvY=
+github.com/deta/deta-go v1.0.0/go.mod h1:vbQaUT8iD6xREm816eNp7Nw1aewd95dpcb/uj0T2vuY=
+github.com/dolthub/vitess v0.0.0-20220603212614-514e62ec66cd h1:2JUMs9E68P6LYJrm1yz4KcGnxiavqj3EeE+fRpVJaEI=
+github.com/dolthub/vitess v0.0.0-20220603212614-514e62ec66cd/go.mod h1:5xfuFfpljoMYespuUmyl5zrHoK0Rl7Bm6yAsnJJJzuY=
+github.com/go-sql-driver/mysql v1.6.0 h1:BCTh4TKNUYmOmMUcQ3IipzF5prigylS7XXjEkfCHuOE=
+github.com/go-sql-driver/mysql v1.6.0/go.mod h1:DCzpHaOWr8IXmIStZouvnhqoel9Qv2LBy8hT2VhHyBg=
+github.com/gorilla/mux v1.8.0 h1:i40aqfkR1h2SlN9hojwV5ZA91wcXFOvkdNIeFDP5koI=
+github.com/gorilla/mux v1.8.0/go.mod h1:DVbg23sWSpFRCP0SfiEN6jmj59UnW/n46BH5rLB71So=
